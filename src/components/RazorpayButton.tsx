@@ -63,9 +63,6 @@ export function RazorpayButton({
       }
 
       const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "";
-      if (!razorpayKey) {
-        alert("Production Notice: NEXT_PUBLIC_RAZORPAY_KEY_ID is missing in environment variables.");
-      }
 
       const options = {
         key: razorpayKey || "rzp_test_demo123456",
@@ -79,7 +76,7 @@ export function RazorpayButton({
           email: studentEmail || "student@example.com",
         },
         theme: {
-          color: "#0c8de9",
+          color: "#d946ef",
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         handler: async function (response: any) {
@@ -124,34 +121,34 @@ export function RazorpayButton({
 
   return (
     <div className="space-y-4">
-      <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 flex items-center justify-between text-sm">
+      <div className="p-4 rounded-xl bg-pink-50/60 border border-pink-100 text-slate-800 flex items-center justify-between text-sm">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-bold text-lg">
+          <div className="w-10 h-10 rounded-lg bg-pink-500/10 border border-pink-200 text-pink-600 flex items-center justify-center font-bold text-lg">
             ₹
           </div>
           <div>
-            <div className="font-semibold text-white">Customization Fee</div>
-            <div className="text-xs text-slate-400">1x Tailored CV + Cover Letter + Email + LinkedIn + Q&A</div>
+            <div className="font-semibold text-slate-900">Customization Fee</div>
+            <div className="text-xs text-slate-500">1x Tailored CV + Cover Letter + Email + LinkedIn + Q&A</div>
           </div>
         </div>
         <div className="text-right">
-          <span className="text-2xl font-black text-white">₹{amountInRupees}</span>
-          <div className="text-[10px] text-emerald-400 flex items-center justify-end gap-1">
+          <span className="text-2xl font-black text-slate-900">₹{amountInRupees}</span>
+          <div className="text-[10px] text-emerald-600 flex items-center justify-end gap-1 font-medium">
             <CheckCircle2 className="w-3 h-3" /> All 5 Outputs Included
           </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-between text-xs px-1 text-slate-400">
-        <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-blue-400" /> 256-bit Secure Razorpay Checkout</span>
-        <span className="text-emerald-400 font-medium">SSL Encrypted</span>
+      <div className="flex items-center justify-between text-xs px-1 text-slate-500">
+        <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-purple-500" /> 256-bit Secure Razorpay Checkout</span>
+        <span className="text-emerald-600 font-medium">SSL Encrypted</span>
       </div>
 
       <button
         type="button"
         onClick={handlePayment}
         disabled={loading}
-        className="w-full py-4 px-6 rounded-xl font-bold text-base text-white bg-gradient-to-r from-emerald-600 via-brand-600 to-indigo-600 hover:from-emerald-500 hover:to-indigo-500 shadow-xl shadow-brand-600/20 hover:shadow-brand-500/40 transition-all flex items-center justify-center gap-3 disabled:opacity-50 cursor-pointer"
+        className="w-full py-4 px-6 rounded-xl font-bold text-base text-white bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 hover:from-pink-600 hover:to-purple-700 shadow-md shadow-pink-500/20 hover:shadow-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50 cursor-pointer"
       >
         {loading ? (
           <>
@@ -160,7 +157,7 @@ export function RazorpayButton({
           </>
         ) : (
           <>
-            <ShieldCheck className="w-5 h-5 text-emerald-300" />
+            <ShieldCheck className="w-5 h-5 text-pink-200" />
             <span>Pay ₹{amountInRupees} & Generate AI Materials</span>
           </>
         )}

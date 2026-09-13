@@ -112,17 +112,17 @@ export default function CreatePage() {
   return (
     <div className="max-w-4xl mx-auto py-4 space-y-8">
       {/* Progress Bar */}
-      <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800">
+      <div className="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm">
         <div className="flex items-center justify-between text-xs font-bold text-slate-400 mb-2">
-          <span className={step >= 1 ? "text-brand-400" : ""}>1. Details</span>
-          <span className={step >= 2 ? "text-brand-400" : ""}>2. Job Description</span>
-          <span className={step >= 3 ? "text-brand-400" : ""}>3. Choose Output & Pay</span>
-          <span className={step >= 4 ? "text-brand-400" : ""}>4. AI Results</span>
+          <span className={step >= 1 ? "text-pink-600 font-extrabold" : ""}>1. Details</span>
+          <span className={step >= 2 ? "text-pink-600 font-extrabold" : ""}>2. Job Description</span>
+          <span className={step >= 3 ? "text-pink-600 font-extrabold" : ""}>3. Choose Output & Pay</span>
+          <span className={step >= 4 ? "text-pink-600 font-extrabold" : ""}>4. AI Results</span>
         </div>
 
-        <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-pink-50 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-brand-500 to-emerald-400 transition-all duration-300"
+            className="h-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 transition-all duration-300"
             style={{ width: `${(step / 4) * 100}%` }}
           />
         </div>
@@ -130,15 +130,15 @@ export default function CreatePage() {
 
       {/* Loading Overlay */}
       {loading && (
-        <div className="p-12 rounded-3xl bg-slate-900 border border-slate-800 text-center space-y-4 shadow-2xl">
-          <Loader2 className="w-12 h-12 text-brand-400 animate-spin mx-auto" />
+        <div className="p-12 rounded-3xl bg-white border border-pink-100 text-center space-y-4 shadow-xl">
+          <Loader2 className="w-12 h-12 text-pink-500 animate-spin mx-auto" />
           <div className="space-y-1">
-            <h3 className="text-xl font-bold text-white">Gemini AI is analyzing your profile...</h3>
-            <p className="text-sm text-slate-400 max-w-md mx-auto">
+            <h3 className="text-xl font-bold text-slate-900">Gemini AI is analyzing your profile...</h3>
+            <p className="text-sm text-slate-500 max-w-md mx-auto">
               Synthesizing genuine experiences, aligning keywords, and crafting customized materials.
             </p>
           </div>
-          <div className="flex items-center justify-center gap-2 text-xs text-emerald-400 pt-2">
+          <div className="flex items-center justify-center gap-2 text-xs text-emerald-600 pt-2 font-medium">
             <CheckCircle2 className="w-4 h-4" /> Razorpay Payment Verified
           </div>
         </div>

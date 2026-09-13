@@ -60,12 +60,12 @@ export function StepOutputSelection({
 
   return (
     <div className="space-y-6">
-      <div className="pb-4 border-b border-slate-800">
-        <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-          <CheckSquare className="w-6 h-6 text-brand-400" />
+      <div className="pb-4 border-b border-pink-100">
+        <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <CheckSquare className="w-6 h-6 text-pink-500" />
           Screen 4 — Choose Output & Unlock
         </h2>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-slate-500">
           Select what AI application materials you want generated, then complete the ₹70 payment.
         </p>
       </div>
@@ -78,27 +78,27 @@ export function StepOutputSelection({
             <div
               key={item.key}
               onClick={() => toggleOutput(item.key)}
-              className={`p-4 rounded-xl border cursor-pointer transition-all flex items-start gap-3.5 select-none ${
+              className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 select-none ${
                 checked
-                  ? "bg-brand-950/40 border-brand-500 text-white shadow-lg shadow-brand-500/10"
-                  : "bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700"
+                  ? "bg-pink-50/70 border-pink-300 text-slate-900 shadow-sm"
+                  : "bg-white border-pink-100 text-slate-600 hover:border-pink-200"
               }`}
             >
               <div
-                className={`mt-0.5 w-5 h-5 rounded flex items-center justify-center border text-xs font-bold transition-colors ${
+                className={`mt-0.5 w-5 h-5 rounded-lg flex items-center justify-center border text-xs font-bold transition-colors ${
                   checked
-                    ? "bg-brand-500 border-brand-400 text-white"
-                    : "border-slate-600 bg-slate-800 text-transparent"
+                    ? "bg-gradient-to-tr from-pink-500 to-purple-600 border-pink-400 text-white"
+                    : "border-slate-300 bg-slate-50 text-transparent"
                 }`}
               >
                 ✓
               </div>
               <div className="flex-1">
-                <div className="flex items-center gap-2 font-semibold text-slate-200">
-                  <Icon className="w-4 h-4 text-brand-400" />
+                <div className="flex items-center gap-2 font-semibold text-slate-900">
+                  <Icon className="w-4 h-4 text-purple-600" />
                   <span>{item.label}</span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1 leading-relaxed">{item.desc}</p>
+                <p className="text-xs text-slate-500 mt-1 leading-relaxed">{item.desc}</p>
               </div>
             </div>
           );
@@ -106,24 +106,24 @@ export function StepOutputSelection({
       </div>
 
       {countSelected === 0 && (
-        <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-300 text-xs text-center font-medium">
+        <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs text-center font-medium">
           ⚠️ Please select at least one output option to proceed.
         </div>
       )}
 
       {/* Razorpay Payment Card */}
-      <div className="p-6 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 space-y-4">
+      <div className="p-6 rounded-2xl bg-white border border-pink-100 space-y-4 shadow-md">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
+            <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-emerald-600" />
               Unlock Customized Application Pack
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               One-time charge of ₹70 for complete AI application generation & instant PDF downloads.
             </p>
           </div>
-          <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+          <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold">
             ₹70 Flat
           </span>
         </div>
@@ -142,7 +142,7 @@ export function StepOutputSelection({
         />
 
         {/* Demo Mode for Faculty / Evaluation */}
-        <div className="pt-2 border-t border-slate-800 text-center">
+        <div className="pt-2 border-t border-pink-100 text-center">
           <button
             type="button"
             onClick={() => {
@@ -152,7 +152,7 @@ export function StepOutputSelection({
               }
               onPaymentSuccess(`demo_eval_${Date.now()}`);
             }}
-            className="w-full py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-brand-300 border border-brand-500/30 text-xs font-semibold flex items-center justify-center gap-2 transition-all hover:border-brand-400 cursor-pointer"
+            className="w-full py-3 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
             <span>⚡ Faculty / Demo Mode: Skip Payment & Generate Instantly</span>
           </button>
@@ -163,7 +163,7 @@ export function StepOutputSelection({
         <button
           type="button"
           onClick={onBack}
-          className="px-6 py-3 rounded-xl font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 transition-all flex items-center gap-2 cursor-pointer"
+          className="px-6 py-3 rounded-xl font-semibold text-slate-700 bg-pink-50 hover:bg-pink-100 transition-all flex items-center gap-2 cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" /> Back
         </button>
