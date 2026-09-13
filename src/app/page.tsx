@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <div className="space-y-16 py-6">
       {/* Hero Section */}
-      <section className="text-center space-y-6 max-w-4xl mx-auto pt-8">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100/70 border border-pink-200 text-pink-700 text-xs font-semibold shadow-sm">
+      <section className="text-center space-y-6 max-w-4xl mx-auto pt-6">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100/80 border border-pink-200 text-pink-700 text-xs font-bold shadow-sm">
           <Sparkles className="w-4 h-4 text-pink-500" />
           <span>AI Placement Copilot for Students</span>
         </div>
@@ -24,14 +24,14 @@ export default function Home() {
           Get job-ready in <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600">minutes</span>.
         </h1>
 
-        <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
           Transform your genuine degree, skills, and projects into job-tailored CVs, cover letters, recruiter emails, LinkedIn notes, and interview prep.
         </p>
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/create"
-            className="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-white text-base bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 hover:from-pink-600 hover:to-purple-700 shadow-xl shadow-pink-500/20 transition-all hover:scale-105 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-white text-base bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 hover:from-pink-600 hover:to-purple-700 shadow-xl shadow-pink-500/25 transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>Create My Application</span>
             <ArrowRight className="w-5 h-5" />
@@ -39,13 +39,13 @@ export default function Home() {
 
           <a
             href="#pricing"
-            className="w-full sm:w-auto px-6 py-4 rounded-2xl font-semibold text-slate-700 text-base bg-white hover:bg-pink-50/50 border border-pink-100 transition-all text-center shadow-sm"
+            className="w-full sm:w-auto px-6 py-4 rounded-2xl font-semibold text-slate-700 text-base bg-white hover:bg-pink-50/50 border border-pink-200 transition-all text-center shadow-sm"
           >
             View Pricing (₹70 Customization)
           </a>
         </div>
 
-        <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
+        <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600 font-medium">
           <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> No fabricated details</span>
           <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-purple-500" /> Razorpay Secured</span>
           <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Instant PDF Download</span>
@@ -105,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* How it works simple flow */}
-      <section className="p-8 rounded-3xl bg-gradient-to-br from-white via-pink-50/40 to-purple-50/40 border border-pink-100 space-y-6 shadow-sm">
+      <section className="p-8 rounded-3xl bg-white/90 backdrop-blur-md border border-pink-100 space-y-6 shadow-sm">
         <h2 className="text-xl font-bold text-slate-900 text-center">How CareerApply AI Works</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
@@ -119,7 +119,7 @@ export default function Home() {
               <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 text-white font-black flex items-center justify-center mx-auto text-sm shadow-md shadow-pink-500/20">
                 {s.step}
               </div>
-              <h3 className="font-semibold text-slate-900 text-sm">{s.title}</h3>
+              <h3 className="font-bold text-slate-900 text-sm">{s.title}</h3>
               <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
             </div>
           ))}
