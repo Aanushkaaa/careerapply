@@ -1,7 +1,10 @@
 import Razorpay from "razorpay";
 import crypto from "crypto";
 
-const keyId = process.env.RAZORPAY_KEY_ID || "";
+const keyId =
+  process.env.RAZORPAY_KEY_ID ||
+  process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ||
+  "";
 const keySecret = process.env.RAZORPAY_KEY_SECRET || "";
 
 export const razorpay =

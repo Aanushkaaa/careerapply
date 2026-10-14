@@ -53,7 +53,16 @@ export function RazorpayButton({
         throw new Error(data.error || "Failed to create Razorpay order");
       }
 
-      const { id: orderId } = data.order;
+      const order = data.order;
+
+      // If keys are not set or mock order returned, fulfill test mode directly
+      if (order.isMock || order.id?.startsWith("order_demo_")) {
+        setTimeout(() => {
+          onSuccess(`pay_test_${Date.now()}`);
+          setLoading(false);
+        }, 1000);
+        return;
+      }
 
       const scriptLoaded = await loadRazorpayScript();
       if (!scriptLoaded) {
@@ -65,12 +74,12 @@ export function RazorpayButton({
       const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "";
 
       const options = {
-        key: razorpayKey || "rzp_test_demo123456",
-        amount: amountInRupees * 100,
-        currency: "INR",
+        key: razorpayKey,
+        amount: order.amount,
+        currency: order.currency || "INR",
         name: "CareerApply AI",
         description: `1x Custom Job Application Pack (₹${amountInRupees})`,
-        order_id: orderId,
+        order_id: order.id,
         prefill: {
           name: studentName || "Student",
           email: studentEmail || "student@example.com",
@@ -94,7 +103,7 @@ export function RazorpayButton({
             if (verifyData.success) {
               onSuccess(response.razorpay_payment_id);
             } else {
-              alert("Payment verification failed. Please contact support.");
+              alert("Payment verification failed. Please check your Razorpay keys.");
             }
           } catch (e) {
             console.error("Verification error:", e);
