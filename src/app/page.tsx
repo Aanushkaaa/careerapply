@@ -30,7 +30,7 @@ export default function Home() {
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href="/create"
+            href="/create?plan=single"
             className="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-white text-base bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 hover:from-pink-600 hover:to-purple-700 shadow-xl shadow-pink-500/25 transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>Create My Application</span>
@@ -164,7 +164,7 @@ export default function Home() {
             </div>
 
             <Link
-              href="/create"
+              href="/create?plan=single"
               className="w-full py-3 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-center transition-all block shadow-md shadow-pink-500/20"
             >
               Get Started for ₹70
@@ -193,10 +193,10 @@ export default function Home() {
             </div>
 
             <Link
-              href="/create"
+              href="/create?plan=monthly"
               className="w-full py-3 rounded-xl font-semibold text-xs text-slate-700 bg-pink-50 hover:bg-pink-100 text-center transition-all block"
             >
-              Select Monthly
+              Select Monthly (₹99)
             </Link>
           </div>
 
@@ -222,10 +222,10 @@ export default function Home() {
             </div>
 
             <Link
-              href="/create"
+              href="/create?plan=pro"
               className="w-full py-3 rounded-xl font-semibold text-xs text-slate-700 bg-pink-50 hover:bg-pink-100 text-center transition-all block"
             >
-              Select Placement Pro
+              Select Placement Pro (₹199)
             </Link>
           </div>
         </div>

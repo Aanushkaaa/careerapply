@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { SelectedOutputs, StudentProfile } from "@/types";
-import { CheckSquare, FileCheck2, Mail, Linkedin, HelpCircle, ArrowLeft, ShieldCheck } from "lucide-react";
+import { CheckSquare, FileCheck2, Mail, Linkedin, HelpCircle, ArrowLeft, ShieldCheck, Zap } from "lucide-react";
 import { RazorpayButton } from "./RazorpayButton";
 
 interface StepOutputSelectionProps {
@@ -19,6 +21,17 @@ export function StepOutputSelection({
   onPaymentSuccess,
   onBack,
 }: StepOutputSelectionProps) {
+  const searchParams = useSearchParams();
+  const initialPlan = searchParams.get("plan");
+
+  const [selectedPlan, setSelectedPlan] = useState<"single" | "monthly" | "pro">("single");
+
+  useEffect(() => {
+    if (initialPlan === "monthly") setSelectedPlan("monthly");
+    else if (initialPlan === "pro") setSelectedPlan("pro");
+    else setSelectedPlan("single");
+  }, [initialPlan]);
+
   const toggleOutput = (key: keyof SelectedOutputs) => {
     onChange({ ...outputs, [key]: !outputs[key] });
   };
@@ -58,15 +71,23 @@ export function StepOutputSelection({
 
   const countSelected = Object.values(outputs).filter(Boolean).length;
 
+  const planDetails = {
+    single: { amount: 70, label: "Single Customization", desc: "1x Custom Job Application Pack" },
+    monthly: { amount: 99, label: "Student Monthly", desc: "10x Applications / Month" },
+    pro: { amount: 199, label: "Placement Pro", desc: "Unlimited Applications / Month" },
+  };
+
+  const currentPlan = planDetails[selectedPlan];
+
   return (
     <div className="space-y-6">
       <div className="pb-4 border-b border-pink-100">
         <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
           <CheckSquare className="w-6 h-6 text-pink-500" />
-          Screen 4 — Choose Output & Unlock
+          Screen 4 — Choose Output & Select Plan
         </h2>
         <p className="text-sm text-slate-500">
-          Select what AI application materials you want generated, then complete the ₹70 payment.
+          Select what AI application materials you want generated, choose your plan, and unlock.
         </p>
       </div>
 
@@ -111,25 +132,54 @@ export function StepOutputSelection({
         </div>
       )}
 
+      {/* Plan Selection Options */}
+      <div className="space-y-3 pt-2">
+        <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+          <Zap className="w-4 h-4 text-pink-500" />
+          Select Pricing Plan:
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {[
+            { id: "single" as const, title: "Single Plan", price: "₹70", desc: "1 Custom Application" },
+            { id: "monthly" as const, title: "Student Monthly", price: "₹99", desc: "10 Applications/mo" },
+            { id: "pro" as const, title: "Placement Pro", price: "₹199", desc: "Unlimited Applications" },
+          ].map((p) => (
+            <div
+              key={p.id}
+              onClick={() => setSelectedPlan(p.id)}
+              className={`p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between ${
+                selectedPlan === p.id
+                  ? "bg-pink-50 border-pink-400 ring-2 ring-pink-400/30 text-slate-900 shadow-sm"
+                  : "bg-white border-pink-100 text-slate-600 hover:border-pink-200"
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-900">{p.title}</span>
+                <span className="text-sm font-black text-purple-600">{p.price}</span>
+              </div>
+              <span className="text-[11px] text-slate-500 mt-1">{p.desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Razorpay Payment Card */}
       <div className="p-6 rounded-2xl bg-white border border-pink-100 space-y-4 shadow-md">
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-emerald-600" />
-              Unlock Customized Application Pack
+              {currentPlan.label}
             </h3>
-            <p className="text-xs text-slate-500">
-              One-time charge of ₹70 for complete AI application generation & instant PDF downloads.
-            </p>
+            <p className="text-xs text-slate-500">{currentPlan.desc}</p>
           </div>
-          <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold">
-            ₹70 Flat
+          <span className="px-3.5 py-1 rounded-full bg-pink-100 text-pink-700 text-sm font-extrabold">
+            ₹{currentPlan.amount}
           </span>
         </div>
 
         <RazorpayButton
-          amountInRupees={70}
+          amountInRupees={currentPlan.amount}
           studentName={profile.name}
           studentEmail={profile.email}
           onSuccess={(paymentId) => {

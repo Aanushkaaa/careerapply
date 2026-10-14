@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import {
   StudentProfile,
   JobDescription,
@@ -14,7 +14,7 @@ import { StepOutputSelection } from "@/components/StepOutputSelection";
 import { StepAiResults } from "@/components/StepAiResults";
 import { Loader2, CheckCircle2 } from "lucide-react";
 
-export default function CreatePage() {
+function CreatePageContent() {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
 
   const [profile, setProfile] = useState<StudentProfile>({
@@ -185,5 +185,13 @@ export default function CreatePage() {
         </>
       )}
     </div>
+  );
+}
+
+export default function CreatePage() {
+  return (
+    <Suspense fallback={<div className="p-12 text-center text-slate-400 text-sm">Loading Application Wizard...</div>}>
+      <CreatePageContent />
+    </Suspense>
   );
 }
