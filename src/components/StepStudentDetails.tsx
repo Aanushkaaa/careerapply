@@ -16,8 +16,8 @@ export function StepStudentDetails({ profile, onChange, onNext }: StepStudentDet
 
   const loadSampleProfile = () => {
     onChange({
-      name: "Deeksha Pathak",
-      email: "deeksha.pathak@example.com",
+      name: "Jane Doe",
+      email: "jane.doe@example.com",
       education: "Indian Institute of Management / Top B-School",
       degree: "MBA in Strategy & Business Analytics",
       skills: "Strategic Planning, Business Analysis, Financial Modeling, Advanced Excel, Market Research, Client Presentation, Communication",
@@ -69,7 +69,7 @@ export function StepStudentDetails({ profile, onChange, onNext }: StepStudentDet
               required
               value={profile.name}
               onChange={(e) => handleChange("name", e.target.value)}
-              placeholder="e.g. Deeksha Pathak"
+              placeholder="e.g. Jane Doe"
               className="w-full px-4 py-3 bg-white border border-pink-100 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-100 transition-all shadow-sm"
             />
           </div>
@@ -83,7 +83,7 @@ export function StepStudentDetails({ profile, onChange, onNext }: StepStudentDet
               required
               value={profile.email}
               onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="e.g. deeksha@example.com"
+              placeholder="e.g. jane.doe@example.com"
               className="w-full px-4 py-3 bg-white border border-pink-100 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-100 transition-all shadow-sm"
             />
           </div>

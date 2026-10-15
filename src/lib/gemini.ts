@@ -164,13 +164,13 @@ Thank you for reviewing my application. I look forward to the opportunity to dis
 
 Sincerely,
 
-${profile.name || "Deeksha Pathak"}
-${profile.email || "deeksha@example.com"}`;
+${profile.name || "Jane Doe"}
+${profile.email || "jane.doe@example.com"}`;
   }
 
   if (outputs.applicationEmail) {
     result.applicationEmail = {
-      subject: `Application for ${role} - ${profile.name || "Deeksha Pathak"} (MBA Candidate)`,
+      subject: `Application for ${role} - ${profile.name || "Jane Doe"} (MBA Candidate)`,
       body: `Dear Hiring Manager,
 
 I hope this email finds you well.
@@ -183,13 +183,13 @@ I would welcome the opportunity to connect for a short conversation to discuss h
 
 Best regards,
 
-${profile.name || "Deeksha Pathak"}
-MBA Candidate | ${profile.email || "deeksha@example.com"}`,
+${profile.name || "Jane Doe"}
+MBA Candidate | ${profile.email || "jane.doe@example.com"}`,
     };
   }
 
   if (outputs.linkedinMessage) {
-    result.linkedinMessage = `Hi [Hiring Manager / Recruiter Name], I hope you're doing well! I saw the ${role} opening at ${company} and wanted to reach out directly. As an ${profile.degree || "MBA Strategy"} candidate with background in ${skillsList.slice(0, 2).join(" & ")}, I admire ${company}'s recent initiatives and would love to connect! Best, ${profile.name || "Deeksha"}`;
+    result.linkedinMessage = `Hi [Hiring Manager / Recruiter Name], I hope you're doing well! I saw the ${role} opening at ${company} and wanted to reach out directly. As an ${profile.degree || "MBA Strategy"} candidate with background in ${skillsList.slice(0, 2).join(" & ")}, I admire ${company}'s recent initiatives and would love to connect! Best, ${profile.name || "Jane Doe"}`;
   }
 
   if (outputs.interviewQuestions) {
